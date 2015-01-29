@@ -1,0 +1,23 @@
+{
+  "name": "ngBoilerplate",
+  "version": "0.0.1",
+  "description": "A simple boilerplate for an angular project with backend.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "gulp serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/venoma333/ngBoilerplate"
+  },
+  "keywords": [
+    "angular",
+    "boileplate"
+  ],
+  "author": "Theodore Yankov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/venoma333/ngBoilerplate/issues"
+  },
+  "homepage": "https://github.com/venoma333/ngBoilerplate"
+}
