@@ -1,7 +1,8 @@
 var gulp = require('gulp'), // https://github.com/gulpjs/gulp
     inject = require('gulp-inject'), // https://github.com/klei/gulp-inject
-    angularFilesort = require('gulp-angular-filesort'); // https://github.com/klei/gulp-angular-filesort
-
+    angularFilesort = require('gulp-angular-filesort'), // https://github.com/klei/gulp-angular-filesort
+    sass = require('gulp-sass'), // https://github.com/dlmanning/gulp-sass
+    cssGlobbing = require('gulp-css-globbing'); // https://github.com/jsahlen/gulp-css-globbing
 
 var assets = {
     js: ['./client/**/*.js', './client/*.js'],
@@ -20,5 +21,12 @@ gulp.task('inject:js', function() {
     .pipe(gulp.dest('./client'));
 });
 
+gulp.task('sass', function() {
+    return gulp.src('client/app.scss')
+    .pipe(cssGlobbing({ extensions: ['.scss'] }))
+    .pipe(sass({ errLogToConsole: true }))
+    .pipe(gulp.dest('client'));
+});
+
 // Start the server and run startup taska
-gulp.task('server', ['inject:js']);
+gulp.task('server', ['sass', 'inject:js']);
