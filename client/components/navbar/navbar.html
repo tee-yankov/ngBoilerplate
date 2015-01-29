@@ -1,0 +1,7 @@
+<div class="navbar" ng-controller="Navbar as vm">
+    <nav class="navbar-container">
+        <ul>
+            <li><a ng-repeat="item in ::vm.items" class="navbar-item" ui-sref="{{item.link}}" ui-sref-active="navbar-item-active">{{item.name}}</a></li>
+        </ul>
+    </nav>
+</div>

@@ -2,7 +2,8 @@
     'use strict';
 
     angular.module('ngBoilerplate', [
-        'ui.router'
+        'ui.router',
+        'components'
     ])
     .config(function($urlRouterProvider, $locationProvider) {
         $urlRouterProvider.otherwise('/main');
