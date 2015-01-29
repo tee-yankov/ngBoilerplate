@@ -19,5 +19,14 @@
   "bugs": {
     "url": "https://github.com/venoma333/ngBoilerplate/issues"
   },
-  "homepage": "https://github.com/venoma333/ngBoilerplate"
+  "homepage": "https://github.com/venoma333/ngBoilerplate",
+  "dependencies": {
+    "express": "^4.11.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-angular-filesort": "^1.0.4",
+    "gulp-inject": "^1.1.1",
+    "gulp-sass": "^1.3.2"
+  }
 }
