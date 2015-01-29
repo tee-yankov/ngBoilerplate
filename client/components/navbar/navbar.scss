@@ -7,6 +7,7 @@
     ul {
         list-style: none;
     }
+    @include card(1);
 }
 
 .navbar-item {

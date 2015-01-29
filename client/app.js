@@ -3,7 +3,8 @@
 
     angular.module('ngBoilerplate', [
         'ui.router',
-        'components'
+        'components',
+        'ngAnimate'
     ])
     .config(function($urlRouterProvider, $locationProvider) {
         $urlRouterProvider.otherwise('/main');

@@ -7,7 +7,8 @@ var gulp = require('gulp'), // https://github.com/gulpjs/gulp
     watch = require('gulp-watch'), // https://github.com/floatdrop/gulp-watch
     batch = require('gulp-batch'), // https://github.com/floatdrop/gulp-batch
     plumber = require('gulp-plumber'), // https://github.com/floatdrop/gulp-plumber
-    notify = require('gulp-notify'); // https://github.com/mikaelbr/gulp-notify
+    notify = require('gulp-notify'), // https://github.com/mikaelbr/gulp-notify
+    autoprefixer = require('gulp-autoprefixer'); // https://github.com/sindresorhus/gulp-autoprefixer
 
 var assets = {
     js: ['client/**/*.js', 'client/*.js'],
@@ -33,6 +34,7 @@ gulp.task('sass', function() {
     .pipe(plumber())
     .pipe(cssGlobbing({ extensions: ['.scss'] }))
     .pipe(sass({ errLogToConsole: true }))
+    .pipe(autoprefixer())
     .pipe(gulp.dest('./client'))
     .pipe(notify('sass compiled'));
 });
