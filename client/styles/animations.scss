@@ -1,6 +1,4 @@
-.well[ui-view]{
-    height: 65px;
-}
+$animationDuration: 0.25s;
 
 .ui-view-container {
     position: relative;
@@ -10,30 +8,20 @@
     position: absolute;
     left: 0;
     right: 0;
-    animation: moveToLeft 1s 1 ease;
 }
 
 [ui-view].ng-enter {
-    animation: moveFromRight 1s 1 ease;
+    animation: fadeInUp $animationDuration;
 }
 
 [ui-view].ng-enter-active {
-    animation: moveFromRight 1s 1 ease;
+    animation: fadeInUp $animationDuration;
 }
 
 [ui-view].ng-leave {
-    animation: moveToLeft 1s 1 ease;
+    animation: fadeOutUp $animationDuration;
 }
 
 [ui-view].ng-leave-active {
-    animation: moveToLeft 1s 1 ease;
-}
-
-@keyframes moveToLeft {
-	from { }
-	to { -webkit-transform: translateX(-100%); transform: translateX(-100%); }
-}
-
-@keyframes moveFromRight {
-	from { -webkit-transform: translateX(100%); transform: translateX(100%); }
+    animation: fadeOutUp $animationDuration;
 }

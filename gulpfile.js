@@ -10,7 +10,7 @@ var gulp = require('gulp'), // https://github.com/gulpjs/gulp
 
 var assets = {
     js: ['client/**/*.js', 'client/*.js'],
-    scss: ['client/**/*.scss', 'client/*.scss'],
+    scss: ['client/**/*.scss', 'client/*.scss', 'client/**/**/*.scss'],
     html: ['client/**/*.html', 'client/*.html']
 };
 
@@ -22,6 +22,7 @@ gulp.task('inject:js', function() {
     return target.pipe(inject(sources, {
         ignorePath: 'client'
     }))
+    .pipe(plumber({ errorHandler: onError }))
     .pipe(gulp.dest('./client'))
     .pipe(notify('javascript injected'));
 });
@@ -29,7 +30,7 @@ gulp.task('inject:js', function() {
 // Compile SASS into a single file
 gulp.task('sass', function() {
     gulp.src('app.scss', { cwd: 'client' })
-    .pipe(plumber())
+    .pipe(plumber({ errorHandler: onError }))
     .pipe(cssGlobbing({ extensions: ['.scss'] }))
     .pipe(sass({ errLogToConsole: true }))
     .pipe(autoprefixer())
@@ -47,8 +48,18 @@ gulp.task('start', ['sass', 'inject:js'], function() {
         script: 'server/server.js',
         watch: 'server',
         ext: 'js'
-    });
+    })
+    .on('restart', notify.onError({
+        title: 'Server Restart'
+    }));
 });
 
 // Start server via nodemon
 gulp.task('serve', ['start', 'watch']);
+
+function onError(err) {
+    notify.onError({
+        title: 'Error',
+        message: err
+    });
+}

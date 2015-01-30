@@ -6,7 +6,10 @@
         'components',
         'ngAnimate'
     ])
-    .config(function($urlRouterProvider, $locationProvider) {
+    .config(function($urlRouterProvider,
+                      $locationProvider,
+                      $urlMatcherFactoryProvider) {
+        $urlMatcherFactoryProvider.strictMode(false);
         $urlRouterProvider.otherwise('/main');
         $locationProvider.html5Mode(true);
     });

@@ -1,0 +1,11 @@
+<div class="carousel-container">
+    <div ng-switch="vm.currentImage">
+        <img ng-switch-when="1" class="carousel-image" src="/assets/images/water.jpg">
+        <img ng-switch-when="2" class="carousel-image" src="/assets/images/sea.jpg">
+        <img ng-switch-when="3" class="carousel-image" src="/assets/images/splash.jpg">
+    </div>
+    <div class="carousel-controls-container" ng-hide="vm.isHidden">
+        <div class="carousel-back"></div>
+        <div class="carousel-forward"></div>
+    </div>
+</div>
