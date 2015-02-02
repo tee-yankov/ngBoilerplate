@@ -6,7 +6,10 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var express = require('express'),
     config = require('./config/environment'),
     app = express(),
+    mongoose = require('mongoose'),
     server = require('http').createServer(app);
+
+mongoose.connect(config.mongo.uri);
 
 require('./config/express')(app);
 require('./routes')(app);

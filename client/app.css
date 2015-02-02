@@ -32,6 +32,50 @@
   -webkit-animation: fadeOutUp 0.25s;
           animation: fadeOutUp 0.25s; }
 
+.modal-container {
+  position: absolute;
+  display: block;
+  width: 16rem;
+  height: 10rem;
+  background: #0288D1;
+  border-radius: 0.25rem;
+  top: 50vh;
+  left: 50vw;
+  box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+  margin-left: -8rem;
+  margin-top: -5rem;
+  -webkit-transition: 0.5s all ease;
+          transition: 0.5s all ease;
+  text-align: center; }
+  .modal-container h3 {
+    margin-top: 1rem;
+    color: #FFFFFF; }
+  .modal-container .modal-input {
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    outline: none;
+    border: none;
+    width: 90%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem; }
+  .modal-container .modal-button {
+    background: #B3E5FC;
+    color: #FFFFFF;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    box-shadow: none;
+    border: none;
+    margin-top: 1rem;
+    font-size: 1.5em;
+    font-weight: 300;
+    -webkit-transition: 0.5s all ease;
+            transition: 0.5s all ease; }
+    .modal-container .modal-button:hover {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.23), 0 10px 40px rgba(0, 0, 0, 0.19);
+      color: #E040FB; }
+
 .carousel-container {
   position: relative;
   display: block;

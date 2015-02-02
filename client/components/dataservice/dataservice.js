@@ -8,11 +8,18 @@
 
     function dataservice($http) {
         return {
-            getMain: getMain
+            getMain: getMain,
+            postMain: postMain
         };
 
         function getMain() {
             return $http.get('/api/main')
+            .then(requestCompleted)
+            .catch(requestFailed);
+        }
+
+        function postMain(input) {
+            return $http.post('/api/main/', {message: input})
             .then(requestCompleted)
             .catch(requestFailed);
         }

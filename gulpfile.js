@@ -9,9 +9,9 @@ var gulp = require('gulp'), // https://github.com/gulpjs/gulp
     autoprefixer = require('gulp-autoprefixer'); // https://github.com/sindresorhus/gulp-autoprefixer
 
 var assets = {
-    js: ['client/**/*.js', 'client/*.js'],
-    scss: ['client/**/*.scss', 'client/*.scss', 'client/**/**/*.scss'],
-    html: ['client/**/*.html', 'client/*.html']
+    js: ['client/*.js', 'client/**/*.js'],
+    scss: ['client/*.scss', 'client/**/*.scss'],
+    html: ['client/*.html', 'client/**/*.html']
 };
 
 // Inject javascript files for development into index.html

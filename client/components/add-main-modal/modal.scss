@@ -1,0 +1,56 @@
+.modal-container {
+    position: absolute;
+    display: block;
+    width: 16rem;
+    height: 10rem;
+    background: $darkPrimaryColor;
+    border-radius: 0.25rem;
+    top: 50vh;
+    left: 50vw;
+    @include card(1);
+    margin: {
+        left: -8rem;
+        top: -5rem;
+    }
+    transition: 0.5s all ease;
+    h3 {
+        margin: {
+            top: 1rem;
+        }
+        color: $textPrimaryColor;
+    }
+    text-align: center;
+    .modal-input {
+        padding: 0.25rem;
+        border-radius: 0.25rem;
+        outline: none;
+        border: none;
+        width: 90%;
+        display: block;
+        margin: {
+            left: auto;
+            right: auto;
+            top: 1rem;
+        }
+    }
+    .modal-button {
+        background: $lightPrimaryColor;
+        color: $textPrimaryColor;
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+        box-shadow: none;
+        border: none;
+        margin: {
+            top: 1rem;
+        }
+        font: {
+            size: 1.5em;
+            weight: 300;
+        }
+        transition: 0.5s all ease;
+        &:hover {
+            @include card(3);
+            color: $accentColor;
+        }
+    }
+}
