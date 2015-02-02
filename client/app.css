@@ -225,7 +225,8 @@
 .hero-container {
   position: relative;
   display: block;
-  overflow: hidden; }
+  overflow: hidden;
+  box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12); }
 
 .hero-image {
   top: 0;

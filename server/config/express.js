@@ -1,6 +1,6 @@
 'use strict';
 var express = require('express'),
-    // favicon = require('serve-favicon'),
+    favicon = require('serve-favicon'),
     morgan = require('morgan'),
     compression = require('compression'),
     bodyParser = require('body-parser'),
@@ -19,7 +19,7 @@ module.exports = function(app) {
     app.use(methodOverride());
     app.use(cookieParser());
     if ('development' === env) {
-        // app.use(favicon(path.join(config.root, 'client', 'favicon.png')));
+        app.use(favicon(path.join(config.root, 'client', 'favicon.ico')));
         app.use(express.static(path.join(config.root, 'client')));
         app.use('/bower_components', express.static(path.join(config.root, 'bower_components')));
         app.use('/assets', express.static(path.join(config.root, 'assets')));

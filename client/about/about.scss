@@ -2,6 +2,7 @@
     position: relative;
     display: block;
     overflow: hidden;
+    @include card(1);
 }
 
 .hero-image {
