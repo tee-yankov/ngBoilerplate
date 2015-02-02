@@ -1,3 +1,33 @@
+.modal-btn-container {
+    border: none;
+    width: 5rem;
+    height: 3rem;
+    background: transparent;
+    text-align: center;
+    margin: 2rem auto;
+    .modal-open-button {
+        width: 100%;
+        height: 100%;
+        background: $darkPrimaryColor;
+        color: $textPrimaryColor;
+        border: none;
+        font: {
+            size: 1em;
+        }
+        border-radius: 0.25rem;
+        transition: 0.5s all ease;
+        &:hover {
+            @include card(2);
+            cursor: pointer;
+            background: $accentColor;
+        }
+        &:focus {
+            box-shadow: none;
+            outline: none;
+        }
+    }
+}
+
 .modal-container {
     position: absolute;
     display: block;
@@ -12,7 +42,7 @@
         left: -8rem;
         top: -5rem;
     }
-    transition: 0.5s all ease;
+    animation: fadeInUp 0.3s;
     h3 {
         margin: {
             top: 1rem;
@@ -44,13 +74,18 @@
             top: 1rem;
         }
         font: {
-            size: 1.5em;
+            size: 1.2em;
             weight: 300;
         }
         transition: 0.5s all ease;
         &:hover {
             @include card(3);
-            color: $accentColor;
+            background-color: $accentColor;
+            cursor: pointer;
         }
     }
+}
+
+.modal-container.ng-hide {
+    animation: fadeOutUp 0.3s;
 }

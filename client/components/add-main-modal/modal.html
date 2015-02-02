@@ -1,4 +1,7 @@
-<div class="modal-container">
+<div class="modal-btn-container">
+    <button class="modal-open-button">Add Item</button>
+</div>
+<div class="modal-container" ng-hide="hidden">
     <h3>Add New Message</h3>
     <form ng-submit="submitItem()">
         <input class="modal-input" type="text" ng-model="input">

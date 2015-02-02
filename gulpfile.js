@@ -16,13 +16,14 @@ var assets = {
 
 // Inject javascript files for development into index.html
 gulp.task('inject:js', function() {
-    var target = gulp.src('client/index.html'),
+    /*var target = gulp.src('client/index.html'),
         sources = gulp.src(assets.js).pipe(angularFilesort());
-
-    return target.pipe(inject(sources, {
+*/
+    gulp.src('client/index.html')
+    .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+    .pipe(inject(gulp.src(assets.js), {
         ignorePath: 'client'
     }))
-    .pipe(plumber({ errorHandler: onError }))
     .pipe(gulp.dest('./client'))
     .pipe(notify('javascript injected'));
 });
@@ -30,7 +31,7 @@ gulp.task('inject:js', function() {
 // Compile SASS into a single file
 gulp.task('sass', function() {
     gulp.src('app.scss', { cwd: 'client' })
-    .pipe(plumber({ errorHandler: onError }))
+    .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
     .pipe(cssGlobbing({ extensions: ['.scss'] }))
     .pipe(sass({ errLogToConsole: true }))
     .pipe(autoprefixer())
@@ -57,9 +58,9 @@ gulp.task('start', ['sass', 'inject:js'], function() {
 // Start server via nodemon
 gulp.task('serve', ['start', 'watch']);
 
-function onError(err) {
+/*function onError(err) {
     notify.onError({
         title: 'Error',
         message: err
     });
-}
+}*/

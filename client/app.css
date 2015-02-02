@@ -32,6 +32,31 @@
   -webkit-animation: fadeOutUp 0.25s;
           animation: fadeOutUp 0.25s; }
 
+.modal-btn-container {
+  border: none;
+  width: 5rem;
+  height: 3rem;
+  background: transparent;
+  text-align: center;
+  margin: 2rem auto; }
+  .modal-btn-container .modal-open-button {
+    width: 100%;
+    height: 100%;
+    background: #0288D1;
+    color: #FFFFFF;
+    border: none;
+    font-size: 1em;
+    border-radius: 0.25rem;
+    -webkit-transition: 0.5s all ease;
+            transition: 0.5s all ease; }
+    .modal-btn-container .modal-open-button:hover {
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.23), 0 3px 12px rgba(0, 0, 0, 0.16);
+      cursor: pointer;
+      background: #E040FB; }
+    .modal-btn-container .modal-open-button:focus {
+      box-shadow: none;
+      outline: none; }
+
 .modal-container {
   position: absolute;
   display: block;
@@ -44,8 +69,8 @@
   box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
   margin-left: -8rem;
   margin-top: -5rem;
-  -webkit-transition: 0.5s all ease;
-          transition: 0.5s all ease;
+  -webkit-animation: fadeInUp 0.3s;
+          animation: fadeInUp 0.3s;
   text-align: center; }
   .modal-container h3 {
     margin-top: 1rem;
@@ -68,13 +93,18 @@
     box-shadow: none;
     border: none;
     margin-top: 1rem;
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-weight: 300;
     -webkit-transition: 0.5s all ease;
             transition: 0.5s all ease; }
     .modal-container .modal-button:hover {
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.23), 0 10px 40px rgba(0, 0, 0, 0.19);
-      color: #E040FB; }
+      background-color: #E040FB;
+      cursor: pointer; }
+
+.modal-container.ng-hide {
+  -webkit-animation: fadeOutUp 0.3s;
+          animation: fadeOutUp 0.3s; }
 
 .carousel-container {
   position: relative;
