@@ -8,7 +8,9 @@
         var vm = this;
         vm.items = [
             { name:'Home', link:'main' },
-            { name:'About', link:'about' }
+            { name:'About', link:'about' },
+            { name:'Login', link:'login' },
+            { name:'Register', link:'register' }
         ];
     }
 

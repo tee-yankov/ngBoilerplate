@@ -1,0 +1,21 @@
+<div class="register-container">
+    <form class="register-form" ng-submit="vm.registerUser()">
+        <div class="form-group">
+            <label for="name">Name: </label>
+            <input type="text" id="name" ng-model="vm.user.name">
+        </div>
+        <div class="form-group">
+            <label for="email">E-Mail: </label>
+            <input type="text" id="email" ng-model="vm.user.email">
+        </div>
+        <div class="form-group">
+            <label for="password">Password: </label>
+            <input type="password" id="password" ng-model="vm.user.password">
+        </div>
+        <div class="form-group">
+            <label for="password-confirm">Confirm Password: </label>
+            <input type="password" id="password-confirm" ng-model="vm.user.passwordConfirm">
+        </div>
+        <input type="submit" class="register-button" value="Register">
+    </form>
+</div>

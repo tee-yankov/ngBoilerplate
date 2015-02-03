@@ -9,6 +9,10 @@ var all = {
 
     port: process.env.PORT || 3000,
 
+    secrets: {
+        session: process.env.SESSION_SECRET || 'ng-boilerplate-secret'
+    },
+
     mongo: {
         options: {
             db: {
