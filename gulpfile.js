@@ -1,3 +1,12 @@
+/**
+ * Available Tasks
+ * ===============
+ * gulp serve - Starts the server and executes necessary tasks.
+ * gulp inject:js - Injects javascript into the main html file.
+ * gulp sass - Compiles sass into one file.
+ * gulp watch - Watches files for changes and executes necessary tasks.
+ * gulp start - Starts the server using nodemon and watches server files for changes. Restarts server when needed.
+ */
 var gulp = require('gulp'), // https://github.com/gulpjs/gulp
     inject = require('gulp-inject'), // https://github.com/klei/gulp-inject
     angularFilesort = require('gulp-angular-filesort'), // https://github.com/klei/gulp-angular-filesort
@@ -16,9 +25,6 @@ var assets = {
 
 // Inject javascript files for development into index.html
 gulp.task('inject:js', function() {
-    /*var target = gulp.src('client/index.html'),
-        sources = gulp.src(assets.js).pipe(angularFilesort());
-*/
     gulp.src('client/index.html')
     .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
     .pipe(inject(gulp.src(assets.js), {
@@ -57,10 +63,3 @@ gulp.task('start', ['sass', 'inject:js'], function() {
 
 // Start server via nodemon
 gulp.task('serve', ['start', 'watch']);
-
-/*function onError(err) {
-    notify.onError({
-        title: 'Error',
-        message: err
-    });
-}*/
