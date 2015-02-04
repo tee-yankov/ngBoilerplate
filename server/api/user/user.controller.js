@@ -41,3 +41,14 @@ exports.destroy = function(req, res, next) {
         res.status(300).json({ message: 'Successfully deleted User collection!' });
     });
 };
+
+exports.me = function(req, res, next) {
+    var userId = req.user._id;
+    User.findOne({
+        _id: userId
+    }, '-salt -hashedPassword', function(err, user) {
+        if (err) { return next(err); }
+        if (!user) { return res.status(401).json({message: 'No such user'}); }
+        res.json(user);
+    });
+};

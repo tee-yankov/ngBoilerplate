@@ -1,8 +1,8 @@
-#A simple boilerplate for Angular with an Express backend and Gulp as a build tool
+# A simple boilerplate for Angular with an Express backend and Gulp as a build tool
 ## Includes:
-- Angular.js
-- Express
-- Gulp
+- Angular.js Frontend
+- Express Backend
+- Gulp Configuration
 
 ## Instructions:
 1. Clone the project in an empty folder.
@@ -17,7 +17,7 @@
 Recompile using the correct version of Python. Node-gyp is used in building the extension and it doesn't like Python 3 at all. Simply reinstall mongoose and give it the path to the right Python binary (2.7 works fine for me).
     
     npm install --python=/usr/bin/python2.7 mongoose
-### Bcrypt fails to build
+### Bcrypt fails to build.
 Explanation is same as above. Reinstall bcrypt with the correct python binary.
     
     npm install --python=/usr/bin/python2.7 bcrypt

@@ -4,4 +4,5 @@
         <h2 ng-repeat="status in vm.status track by status._id">{{status.message}}</h2>
     </div>
     <add-main-modal submit="vm.submitMain(input)"></add-main-modal>
+    {{vm.isLoggedIn()}}
 </div>

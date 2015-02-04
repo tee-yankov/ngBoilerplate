@@ -8,15 +8,25 @@
     angular.module('components')
     .factory('Auth', Auth);
 
-    Auth.$inject = ['$http'];
+    Auth.$inject = ['$http', '$cookieStore', '$q', 'User'];
 
-    function Auth($http) {
-        var factory = {
+    function Auth($http, $cookieStore, $q, User) {
+        var service = {
             loginUser: loginUser,
-            registerUser: registerUser
+            registerUser: registerUser,
+            logoutUser: logoutUser,
+            getCurrentUser: getCurrentUser,
+            isLoggedIn: isLoggedIn,
+            isAdmin: isAdmin,
+            getToken: getToken,
+            isLoggedInAsync: isLoggedInAsync
         };
+        var currentUser = {};
+        if($cookieStore.get('token')) {
+            currentUser = User.get();
+        }
 
-        return factory;
+        return service;
 
         /**
          * Registers an user.
@@ -29,7 +39,7 @@
                 email: user.email,
                 password: user.password
             })
-            .then(requestCompleted)
+            .then(loginCompleted)
             .catch(requestFailed);
         }
 
@@ -43,8 +53,49 @@
                 email: user.email,
                 password: user.password
             })
-            .then(requestCompleted)
+            .then(loginCompleted)
             .catch(requestFailed);
+        }
+
+        function logoutUser() {
+            $cookieStore.remove('token');
+            currentUser = {};
+        }
+
+        function getCurrentUser() {
+            return currentUser;
+        }
+
+        function isLoggedIn() {
+            return currentUser.hasOwnProperty('role');
+        }
+
+        function isAdmin() {
+            return currentUser.role === 'admin';
+        }
+
+        function getToken() {
+            return $cookieStore.get('token');
+        }
+
+        function isLoggedInAsync(cb) {
+            if(currentUser.hasOwnProperty('$promise')) {
+                currentUser.$promise.then(function() {
+                    cb(true);
+                }).catch(function() {
+                    cb(false);
+                });
+            } else if(currentUser.hasOwnProperty('role')) {
+                cb(true);
+            } else {
+                cb(false);
+            }
+        }
+
+        function loginCompleted(data) {
+            $cookieStore.put('token', data.data.token);
+            currentUser = User.get();
+            return data.data;
         }
 
     }
@@ -55,9 +106,9 @@
      * @return {object} data - User data received from the server.
      * Might need to reduce the amount of information exposed later on.
      */
-    function requestCompleted(data) {
+    /*    function requestCompleted(data) {
         return data.data;
-    }
+    }*/
 
     /**
      * Executes on failed request.
