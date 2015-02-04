@@ -197,8 +197,20 @@
   font-size: 1.5em;
   margin-right: 1.5rem; }
 
+.navbar-align-left {
+  display: inline;
+  float: left; }
+
+.navbar-align-right {
+  display: inline;
+  float: right; }
+
 .navbar-item-active {
   color: #E040FB; }
+
+.navbar-username {
+  font-size: 1em;
+  font-weight: 300; }
 
 .spinner-container {
   position: absolute;

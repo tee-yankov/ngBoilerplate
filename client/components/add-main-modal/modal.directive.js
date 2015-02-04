@@ -76,7 +76,9 @@
              * to the Main collection. Alert if scope.input is empty.
              */
             scope.submitItem = function() {
-                if (scope.input && scope.input.length > 0) {
+                if (scope.input &&
+                    scope.input.length > 0 &&
+                    scope.input.length <= 140) {
                     scope.submit({ input: scope.input });
                     scope.input = '';
                     toggleModal();

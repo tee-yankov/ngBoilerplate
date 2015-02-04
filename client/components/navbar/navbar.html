@@ -2,7 +2,18 @@
     <nav class="navbar-container">
         <ul>
             <li>
-                <a ng-repeat="item in ::vm.items" class="navbar-item" ui-sref="{{item.link}}" ui-sref-active="navbar-item-active">{{item.name}}</a>
+                <div class="navbar-align-left">
+                    <a class="navbar-item" ui-sref="main" ui-sref-active="navbar-item-active">Home</a>
+                    <a class="navbar-item" ui-sref="about" ui-sref-active="navbar-item-active">About</a>
+                    <span ng-hide="vm.isLoggedIn()">
+                        <a class="navbar-item" ui-sref="login" ui-sref-active="navbar-item-active">Login</a>
+                        <a class="navbar-item" ui-sref="register" ui-sref-active="navbar-item-active">Register</a>
+                    </span>
+                </div>
+                <div ng-hide="!vm.isLoggedIn()" class="navbar-align-right">
+                    <a href class="navbar-item navbar-username" ng-click="vm.logout()">Logout</a>
+                    <a class="navbar-item navbar-username">Hey there, {{vm.getCurrentUser().name}}</a>
+                </div>
             </li>
         </ul>
     </nav>

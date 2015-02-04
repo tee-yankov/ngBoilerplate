@@ -14,7 +14,7 @@
         var service = {
             loginUser: loginUser,
             registerUser: registerUser,
-            logoutUser: logoutUser,
+            logout: logout,
             getCurrentUser: getCurrentUser,
             isLoggedIn: isLoggedIn,
             isAdmin: isAdmin,
@@ -57,7 +57,7 @@
             .catch(requestFailed);
         }
 
-        function logoutUser() {
+        function logout() {
             $cookieStore.remove('token');
             currentUser = {};
         }

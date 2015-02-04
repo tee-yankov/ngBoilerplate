@@ -11,9 +11,6 @@
         vm.submitMain = submitMain;
         vm.isLoggedIn = Auth.isLoggedIn;
 
-        console.log(Auth.isLoggedIn());
-        console.log(Auth.getCurrentUser());
-
         activate();
 
         function activate() {

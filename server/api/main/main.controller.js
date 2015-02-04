@@ -17,15 +17,15 @@ exports.index = function(req, res) {
 exports.create = function(req, res) {
     if (!req.body.message) { return res.status(500).json({ err: 'You need to have a message key!' }); }
     Main.create(req.body, function(err, main) {
-        if(err) { return res.status(500).json({ err: 'Whoops!' }); }
-        return res.status(201).json(main);
+        if(err) { return res.status(500).json({ err: err }); }
+        return res.status(200).json(main);
     });
 };
 
 /** Deletes the entire document */
 exports.destroy = function(req, res) {
     Main.remove(function(err) {
-        if (err) { return res.status(500).json({ err: 'Couldnt delete document.'}); }
-        res.status(300).json({ message: 'Successfully deleted document Main!' });
+        if (err) { return res.status(500).json({ err: 'Couldn\'t delete document.'}); }
+        res.status(200).json({ message: 'Successfully deleted document Main!' });
     });
 };

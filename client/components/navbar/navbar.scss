@@ -24,6 +24,23 @@
     }
 }
 
+.navbar-align-left {
+    display: inline;
+    float: left;
+}
+
+.navbar-align-right {
+    display: inline;
+    float: right;
+}
+
 .navbar-item-active {
     color: $accentColor;
+}
+
+.navbar-username {
+    font: {
+        size: 1em;
+        weight: 300;
+    }
 }
