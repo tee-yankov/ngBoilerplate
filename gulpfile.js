@@ -17,6 +17,15 @@ var gulp = require('gulp'), // https://github.com/gulpjs/gulp
     notify = require('gulp-notify'), // https://github.com/mikaelbr/gulp-notify
     autoprefixer = require('gulp-autoprefixer'); // https://github.com/sindresorhus/gulp-autoprefixer
 
+// Executes on error
+var onError = function(err) {
+    notify.onError({
+        title:    "Gulp",
+        subtitle: "Failure!",
+        message:  "Error: <%= error.message %>"
+    })(err);
+};
+
 var assets = {
     js: ['client/*.js', 'client/**/*.js'],
     scss: ['client/*.scss', 'client/**/*.scss'],
@@ -26,23 +35,25 @@ var assets = {
 // Inject javascript files for development into index.html
 gulp.task('inject:js', function() {
     gulp.src('client/index.html')
-    .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+    .pipe(plumber({
+        errorHandler: onError
+    }))
     .pipe(inject(gulp.src(assets.js), {
         ignorePath: 'client'
     }))
-    .pipe(gulp.dest('./client'))
-    .pipe(notify('javascript injected'));
+    .pipe(gulp.dest('./client'));
 });
 
 // Compile SASS into a single file
 gulp.task('sass', function() {
     gulp.src('app.scss', { cwd: 'client' })
-    .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+    .pipe(plumber({
+        errorHandler: onError
+    }))
     .pipe(cssGlobbing({ extensions: ['.scss'] }))
-    .pipe(sass({ errLogToConsole: true }))
+    .pipe(sass())
     .pipe(autoprefixer())
-    .pipe(gulp.dest('./client'))
-    .pipe(notify('sass compiled'));
+    .pipe(gulp.dest('./client'));
 });
 
 gulp.task('watch', function() {
@@ -56,9 +67,13 @@ gulp.task('start', ['sass', 'inject:js'], function() {
         watch: 'server',
         ext: 'js'
     })
-    .on('restart', notify.onError({
-        title: 'Server Restart'
-    }));
+    .on('crash', function() {
+        gulp.src('gulpfile.js')
+        .pipe(notify({
+            title: 'Server Crashed',
+            message: 'Waiting for changes...'
+        }));
+    });
 });
 
 // Start server via nodemon

@@ -19,7 +19,7 @@
         function getMain() {
             return dataservice.getMain()
             .then(function(data) {
-                vm.status = data.message;
+                vm.status = data.message ? data.message : {};
                 return data;
             });
         }
