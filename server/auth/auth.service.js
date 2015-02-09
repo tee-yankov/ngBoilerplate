@@ -48,7 +48,7 @@ function hasRole(roleRequired) {
         if (config.userRoles.indexOf(req.user.role) >= config.userRoles.indexOf(roleRequired)) {
             next();
         } else {
-            res.status(403);
+            res.status(403).json('Insufficient permissions!');
         }
     });
 }

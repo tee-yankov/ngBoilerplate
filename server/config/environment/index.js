@@ -13,6 +13,8 @@ var all = {
         session: process.env.SESSION_SECRET || 'ng-boilerplate-secret'
     },
 
+    userRoles: ['guest', 'user', 'admin'],
+
     mongo: {
         options: {
             db: {

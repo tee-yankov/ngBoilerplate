@@ -15,6 +15,8 @@ module.exports = mongoose.model('Main', MainSchema);
 MainSchema
 .path('message')
 .validate(function(message) {
-    return message.length &&
-        message.length < 254;
+    if (message) {
+        return message.length &&
+            message.length < 254;
+    } return false;
 }, 'Message cannot be blank or more than 254 characters');

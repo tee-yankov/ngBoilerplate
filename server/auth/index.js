@@ -6,9 +6,11 @@ var express = require('express'),
 
 /** Passport Configuration */
 require('./local/passport').setup(User, config);
+require('./linkedin/passport').setup(User, config);
 
 var router = express.Router();
 
 router.use('/local', require('./local'));
+router.use('/linkedin', require('./linkedin'));
 
 module.exports = router;
