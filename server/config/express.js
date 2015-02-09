@@ -18,6 +18,15 @@ module.exports = function(app) {
     app.use(bodyParser.json());
     app.use(methodOverride());
     app.use(cookieParser());
+    if ('production' === env) {
+        app.use(favicon(path.join(config.root, 'build', 'favicon.ico')));
+        app.use(express.static(path.join(config.root, 'build')));
+        app.use('/bower_components', express.static(path.join(config.root, 'bower_components')));
+        app.use('/assets', express.static(path.join(config.root, 'assets')));
+        app.set('appPath', config.root + '/build');
+        app.use(morgan('dev'));
+        app.use(errorHandler());
+    }
     if ('development' === env) {
         app.use(favicon(path.join(config.root, 'client', 'favicon.ico')));
         app.use(express.static(path.join(config.root, 'client')));

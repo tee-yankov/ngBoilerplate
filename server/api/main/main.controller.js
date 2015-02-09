@@ -2,6 +2,10 @@
 
 var Main = require('./main.model.js');
 
+var validationError = function(res, err) {
+    return res.status(422).json(err);
+};
+
 /** Returns all the items in the entire collection. */
 exports.index = function(req, res) {
     Main.find(function(err, main) {
@@ -15,9 +19,8 @@ exports.index = function(req, res) {
  * @param {string} message - Creates a new Message with the given string.
  */
 exports.create = function(req, res) {
-    if (!req.body.message) { return res.status(500).json({ err: 'You need to have a message key!' }); }
     Main.create(req.body, function(err, main) {
-        if(err) { return res.status(500).json({ err: err }); }
+        if (err) { return validationError(res, err); }
         return res.status(200).json(main);
     });
 };

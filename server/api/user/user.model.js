@@ -37,7 +37,6 @@ UserSchema
     return {
         'name': this.name,
         'role': this.role,
-        'image': this.image
     };
 });
 
@@ -59,16 +58,34 @@ UserSchema
 .path('email')
 .validate(function(email) {
     if (authTypes.indexOf(this.provider) !== -1) return true;
-    return email.length;
-}, 'Email cannot be blank');
+    return email.length >= 3 &&
+        email.length < 254;
+}, 'Email must be at least 3 characters and at most 254 characters');
+
+// Validate email validity
+UserSchema
+.path('email')
+.validate(function(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}, 'Invalid email');
 
 // Validate empty password
 UserSchema
 .path('hashedPassword')
 .validate(function(hashedPassword) {
     if (authTypes.indexOf(this.provider) !== -1) return true;
-    return hashedPassword.length;
+    return (hashedPassword.length);
 }, 'Password cannot be blank');
+
+// Validate password length
+UserSchema
+.path('name')
+.validate(function(password) {
+    if (authTypes.indexOf(this.provider) !== -1) return true;
+    return this._password.length > 6 &&
+        this._password.length < 64;
+}, 'Password must be longer than 6 symbols and shorter than 64');
 
 // Validate email is not taken
 UserSchema
