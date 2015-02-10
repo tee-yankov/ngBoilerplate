@@ -23,6 +23,9 @@ var gulp = require('gulp'), // https://github.com/gulpjs/gulp
     del = require('del'), // https://github.com/sindresorhus/del
     copy = require('gulp-copy'); // https://github.com/klaascuvelier/gulp-copy
 
+var env = require('./server/config/environment/local.env');
+console.log(env);
+
 // Executes on error
 var onError = function(err) {
     notify.onError({
@@ -98,7 +101,8 @@ gulp.task('start', ['inject'], function() {
     nodemon({
         script: 'server/server.js',
         watch: 'server',
-        ext: 'js'
+        ext: 'js',
+        env: env
     })
     .on('crash', function() {
         gulp.src('gulpfile.js')

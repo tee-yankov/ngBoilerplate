@@ -4,11 +4,12 @@
     angular.module('ngBoilerplate')
     .controller('Login', Login);
 
-    Login.$inject = ['Auth', '$state'];
+    Login.$inject = ['Auth', '$state', '$window'];
 
-    function Login(Auth, $state) {
+    function Login(Auth, $state, $window) {
         var vm = this;
         vm.loginUser = loginUser;
+        vm.loginLinkedIn = loginLinkedIn;
 
         /**
          * Logs the user in
@@ -23,12 +24,21 @@
         }
 
         /**
+         * Logs the user in with the specified provider
+         *
+         * @param {string} provider - auth provider
+         */
+        function loginLinkedIn(provider) {
+            $window.location.href = '/auth/' + provider;
+        }
+
+        /**
          * Executes on finished login request
          * Determines if the request was succesful
          * Redirects the user to the main page
          */
         function loginCompleted(data) {
-            if (data.hasOwnProperty('token')) {
+            if (data.token) {
                 $state.go('main');
             } else { window.alert('Invalid Credentials'); }
         }

@@ -6,16 +6,15 @@ var express = require('express'),
 
 var router = express.Router();
 
-router.get('/auth/linkedin',
-        passport.authenticate('linkedin', { state: 'SOME STATE'  }),
-        function(req, res){
-    // The request will be redirected to LinkedIn for authentication, so this
-    // function will not be called.
-});
+router
+.get('/', passport.authenticate('linkedin', {
+    state: 'DCEEEF',
+    session: false
+}))
 
-router.get('/auth/linkedin/callback', passport.authenticate('linkedin', {
-    successRedirect: '/',
-    failureRedirect: '/login'
-}));
+.get('/callback', passport.authenticate('linkedin', {
+    failureRedirect: '/login',
+    session: false
+}), auth.setTokenCookie);
 
 module.exports = router;

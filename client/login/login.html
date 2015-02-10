@@ -8,10 +8,16 @@
             <label for="password">Password: </label>
             <input type="password" minlength="6" maxlength="254" id="password" ng-model="vm.user.password" required>
         </div>
+        <!-- Doesn't do anything yet! -->
         <div class="form-group">
             <label for="remember">Remember Me: </label>
             <input type="checkbox" id="remember" ng-model="vm.user.rememberMe">
         </div>
+        <!-- END Non-functional block -->
         <input type="submit" class="login-button" value="Log In">
     </form>
+    <br />
+    <div class="login-social-container">
+        <button class="login-linkedin" ng-click="vm.loginLinkedIn('linkedin')">LinkedIn</button>
+    </div>
 </div>

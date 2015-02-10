@@ -1,4 +1,5 @@
 'use strict';
+
 var express = require('express'),
     passport = require('passport'),
     config = require('../config/environment'),

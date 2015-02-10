@@ -56,3 +56,27 @@
         background: $accentColor;
     }
 }
+
+.login-social-container {
+    display: block;
+    margin: 4rem;
+    .login-linkedin {
+        padding: 1rem;
+        border: 0;
+        background: $darkPrimaryColor;
+        color: $textPrimaryColor;
+        border-radius: 0.25rem;
+        @include card(1);
+        transition: 0.25s all ease;
+        font: {
+            size: 1.2em;
+        }
+        &:focus {
+            outline: 0;
+        }
+        &:hover {
+            @include card(3);
+            cursor: pointer;
+        }
+    }
+}

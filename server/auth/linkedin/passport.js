@@ -3,21 +3,32 @@
 var LinkedInStrategy = require('passport-linkedin-oauth2').Strategy,
     passport = require('passport');
 
+
 exports.setup = function(User, config) {
     passport.use(new LinkedInStrategy({
-        clientID: '75wb1drd0nlgji',
-        clientSecret: 'xudX98aEdxSwksCn',
+        clientID: process.env.LINKEDIN_ID,
+        clientSecret: process.env.LINKEDIN_SECRET,
         callbackURL: 'http://127.0.0.1:3000/auth/linkedin/callback',
-        scope: ['r_emailaddress', 'r_basicprofile'],
-        state: true
+        scope: ['r_emailaddress', 'r_basicprofile']
     }, function(accessToken, refreshToken, profile, done) {
-        // asynchronous verification, for effect...
-        process.nextTick(function () {
-            // To keep the example simple, the user's LinkedIn profile is returned to
-            // represent the logged-in user. In a typical application, you would want
-            // to associate the LinkedIn account with a user record in your database,
-            // and return that user instead.
-            return done(null, profile);
+        User.findOne({
+            'linkedin.id': profile.id
+        }, function(err, user) {
+            if (!user) {
+                user = new User({
+                    name: profile.displayName,
+                    email: profile.emails[0].value,
+                    role: 'user',
+                    provider: 'linkedin',
+                    linkedin: profile._json
+                });
+                user.save(function(err) {
+                    if (err) done(err);
+                    return done(err, user);
+                });
+            } else {
+                return done(err, user);
+            }
         });
     }));
 };

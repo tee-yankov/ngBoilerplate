@@ -1,0 +1,11 @@
+<div class="account-container">
+    <h1>About Me</h1>
+    <div class="user-information">
+        <ul>
+            <li>Name: {{::vm.currentUser.name}}</li>
+            <li>E-Mail: {{::vm.currentUser.email}}</li>
+            <li>Provider: {{::vm.currentUser.provider}}</li>
+            <li>Particulars: {{::vm.currentUser[vm.currentUser.provider]}}</li>
+        </ul>
+    </div>
+</div>

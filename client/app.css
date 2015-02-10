@@ -114,6 +114,10 @@ form input[type="checkbox"] {
         max-width: 5rem;
         max-height: 5rem; }
 
+.account-container {
+  position: relative;
+  top: 4rem; }
+
 .login-container {
   position: relative;
   top: 4rem;
@@ -161,6 +165,25 @@ form input[type="checkbox"] {
   .login-button:hover {
     cursor: pointer;
     background: #E040FB; }
+
+.login-social-container {
+  display: block;
+  margin: 4rem; }
+  .login-social-container .login-linkedin {
+    padding: 1rem;
+    border: 0;
+    background: #0288D1;
+    color: #FFFFFF;
+    border-radius: 0.25rem;
+    box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+    -webkit-transition: 0.25s all ease;
+            transition: 0.25s all ease;
+    font-size: 1.2em; }
+    .login-social-container .login-linkedin:focus {
+      outline: 0; }
+    .login-social-container .login-linkedin:hover {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.23), 0 10px 40px rgba(0, 0, 0, 0.19);
+      cursor: pointer; }
 
 .main-container {
   position: relative;
@@ -445,6 +468,9 @@ form input[type="checkbox"] {
 .navbar-username {
   font-size: 1em;
   font-weight: 300; }
+
+.navbar-account {
+  font-size: 1em; }
 
 .spinner-container {
   position: absolute;

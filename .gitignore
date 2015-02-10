@@ -5,3 +5,4 @@ bower_components
 node_modules
 assets/images
 build/
+/server/config/environment/local.env.js

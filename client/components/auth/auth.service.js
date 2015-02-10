@@ -8,9 +8,9 @@
     angular.module('components')
     .factory('Auth', Auth);
 
-    Auth.$inject = ['$http', '$cookieStore', '$q', 'User'];
+    Auth.$inject = ['$http', '$cookieStore', '$q', 'User', '$state'];
 
-    function Auth($http, $cookieStore, $q, User) {
+    function Auth($http, $cookieStore, $q, User, $state) {
         var service = {
             loginUser: loginUser,
             registerUser: registerUser,
@@ -60,6 +60,7 @@
         function logout() {
             $cookieStore.remove('token');
             currentUser = {};
+            $state.go('main');
         }
 
         function getCurrentUser() {

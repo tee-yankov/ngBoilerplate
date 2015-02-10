@@ -18,5 +18,5 @@ MainSchema
     if (message) {
         return message.length &&
             message.length < 254;
-    } return false;
+    } else { return false; }
 }, 'Message cannot be blank or more than 254 characters');
