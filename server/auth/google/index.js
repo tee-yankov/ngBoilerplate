@@ -7,13 +7,16 @@ var express = require('express'),
 var router = express.Router();
 
 router
-.get('/', passport.authenticate('linkedin', {
+.get('/', passport.authenticate('google', {
     failureRedirect: '/login',
-    state: 'DCEEEF',
+    scope: [
+        'https://www.googleapis.com/auth/userinfo.profile',
+        'https://www.googleapis.com/auth/userinfo.email'
+    ],
     session: false
 }))
 
-.get('/callback', passport.authenticate('linkedin', {
+.get('/callback', passport.authenticate('google', {
     failureRedirect: '/login',
     session: false
 }), auth.setTokenCookie);

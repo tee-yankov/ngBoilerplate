@@ -80,3 +80,8 @@
         }
     }
 }
+
+.login-google {
+    background: #dd4b39 !important;
+    @extend .login-linkedin;
+}

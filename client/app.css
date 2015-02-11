@@ -169,7 +169,7 @@ form input[type="checkbox"] {
 .login-social-container {
   display: block;
   margin: 4rem; }
-  .login-social-container .login-linkedin {
+  .login-social-container .login-linkedin, .login-social-container .login-google {
     padding: 1rem;
     border: 0;
     background: #0288D1;
@@ -179,11 +179,14 @@ form input[type="checkbox"] {
     -webkit-transition: 0.25s all ease;
             transition: 0.25s all ease;
     font-size: 1.2em; }
-    .login-social-container .login-linkedin:focus {
+    .login-social-container .login-linkedin:focus, .login-social-container .login-google:focus {
       outline: 0; }
-    .login-social-container .login-linkedin:hover {
+    .login-social-container .login-linkedin:hover, .login-social-container .login-google:hover {
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.23), 0 10px 40px rgba(0, 0, 0, 0.19);
       cursor: pointer; }
+
+.login-google {
+  background: #dd4b39 !important; }
 
 .main-container {
   position: relative;
