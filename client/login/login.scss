@@ -60,6 +60,8 @@
 .login-social-container {
     display: block;
     margin: 4rem;
+    width: 21rem;
+    margin: 0 auto;
     .login-linkedin {
         padding: 1rem;
         border: 0;
@@ -83,5 +85,10 @@
 
 .login-google {
     background: #dd4b39 !important;
+    @extend .login-linkedin;
+}
+
+.login-facebook {
+    background: #3B5998 !important;
     @extend .login-linkedin;
 }

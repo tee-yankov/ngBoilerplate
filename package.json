@@ -23,8 +23,10 @@
   "dependencies": {
     "bcrypt": "^0.8.1",
     "composable-middleware": "^0.3.0",
+    "connect-mongo": "^0.7.0",
     "express": "^4.11.1",
     "express-jwt": "^1.0.0",
+    "express-session": "^1.10.2",
     "gulp-uglify": "^1.1.0",
     "jsonwebtoken": "^3.2.2",
     "mongoose": "^3.8.22",
