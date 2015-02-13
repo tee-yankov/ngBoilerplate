@@ -9,7 +9,8 @@
     function dataservice($http) {
         return {
             getMain: getMain,
-            postMain: postMain
+            postMain: postMain,
+            deleteMain: deleteMain
         };
 
 
@@ -27,6 +28,17 @@
          */
         function postMain(input) {
             return $http.post('/api/main/', {message: input})
+            .then(requestCompleted)
+            .catch(requestFailed);
+        }
+
+        /**
+         * Delets a single item from the Main collection
+         * @param {objectId} id - the id of the item to be deleted
+         * Requires the id parameter.
+         */
+        function deleteMain(id) {
+            return $http.delete('/api/main/' + id)
             .then(requestCompleted)
             .catch(requestFailed);
         }

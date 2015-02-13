@@ -18,6 +18,8 @@
 	"indent": 4,
 	"maxlen": 80,
     "globals": {
-        "angular": true
+        "angular": true,
+        "_": true,
+        "io": true
     }
 }

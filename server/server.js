@@ -7,11 +7,13 @@ var express = require('express'),
     config = require('./config/environment'),
     app = express(),
     mongoose = require('mongoose'),
-    server = require('http').createServer(app);
+    server = require('http').createServer(app),
+    socketio = require('socket.io')(server);
 
 mongoose.connect(config.mongo.uri);
 
 require('./config/express')(app);
+require('./config/socketio')(socketio);
 require('./routes')(app);
 
 // Start the server

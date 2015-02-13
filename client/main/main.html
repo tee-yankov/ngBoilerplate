@@ -2,7 +2,7 @@
     <carousel></carousel>
     <div class="container">
         <h2 class="main-warning" ng-if="!vm.isLoggedIn()">You'll need to log in first to post anything.</h2>
-        <h2 ng-repeat="status in vm.status track by status._id">{{status.message}}</h2>
+        <h2 ng-repeat="status in vm.status track by status._id" ng-click="vm.deleteMain(status._id)">{{status.message}}</h2>
         <div ng-if="vm.isLoggedIn()">
             <add-main-modal submit="vm.submitMain(input)"></add-main-modal>
         </div>

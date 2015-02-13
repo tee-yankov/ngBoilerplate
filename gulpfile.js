@@ -24,7 +24,6 @@ var gulp = require('gulp'), // https://github.com/gulpjs/gulp
     copy = require('gulp-copy'); // https://github.com/klaascuvelier/gulp-copy
 
 var env = require('./server/config/environment/local.env');
-console.log(env);
 
 // Executes on error
 var onError = function(err) {
