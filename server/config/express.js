@@ -24,7 +24,7 @@ module.exports = function(app) {
     app.use(cookieParser());
     app.use(passport.initialize());
 
-/*    // Persist sessions with mongoStore
+/*    // Persist sessions with mongoStore for oAuth 1 strategies
     // We need to enable sessions for passport twitter because its an oauth 1.0 strategy
     app.use(session({
         secret: config.secrets.session,
